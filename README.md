@@ -11,7 +11,7 @@ async
 	- 第二个参数将把值传给下一个任务,从而实现各任务衔接
 - 第二个参数是前一个任务传入
 
-```js
+```javascript
 function task (cb, ret) {
     setTimeout( function () {
         cb (null, new Date); // 调用这函数以后将转入执行下一个任务,前一个参数null表示没遇到错误
@@ -21,7 +21,7 @@ function task (cb, ret) {
 
 #### 依次执行各个任务(可以是异步也可以是同步),最后一个参数为各任务执行完后回调函数. 
 
-```js
+```javascript
 function f1(cb, ret){
 	setTimeout(function () {
 		ret = {f1:1};
@@ -43,7 +43,7 @@ async( f1, f2, function (err, ret) {
 
 #### 当执行过程中遇错时,忽略后面任务直接调用回调函数
 
-```js
+```javascript
 function err(cb, ret) {
 	setTimeout(function () {
 		cb("error message", ret);
@@ -57,7 +57,7 @@ async( f1, err, f2, function (err, ret) {
 
 #### 循环执行指定任务,第一个是任务函数,第二个是执行完成回调函数
 
-```js
+```javascript
 async.loop( function(cb, ret){
 	setTimeout( function(){
 		if (!ret) {
